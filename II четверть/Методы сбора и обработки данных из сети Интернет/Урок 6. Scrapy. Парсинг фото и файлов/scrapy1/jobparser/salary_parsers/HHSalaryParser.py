@@ -1,10 +1,10 @@
-import  re
+import re
 
 class HHSalaryParser:
     def __init__(self, data):
         self.str = data
 
-    def getMinCompensation(self):
+    def get_min_compensation(self):
         try:
             numbers = re.findall(r'\d+', self.str.replace(' ', ''))
             if len(numbers) == 2:
@@ -16,7 +16,7 @@ class HHSalaryParser:
         except:
             return None
 
-    def getMaxCompensation(self):
+    def get_max_compensation(self):
         try:
             numbers = re.findall(r'\d+', self.str.replace(' ', ''))
             if len(numbers) == 2:
@@ -27,13 +27,3 @@ class HHSalaryParser:
                 return int(numbers[0]) if 'до' in self.str else int(numbers[-1])
         except:
             return None
-
-#salary = 'от 250 000 руб.'
-#salary = 'до 5000 USD'
-#salary = '150000 – 220000 руб.'
-#salary = 'з/п не указана'
-salary = 'от 170 000 до 220 000 руб.'
-
-hh = HHSalaryParser(salary)
-print(hh.getMinCompensation())
-print(hh.getMaxCompensation())
