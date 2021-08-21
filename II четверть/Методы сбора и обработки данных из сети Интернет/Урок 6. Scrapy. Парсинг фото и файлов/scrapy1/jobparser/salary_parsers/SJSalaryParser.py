@@ -2,7 +2,7 @@ import re
 
 class SJSalaryParser:
     def __init__(self, data):
-        self.str = data
+        self.str = ''.join(data).replace('\xa0', ' ')
 
     def get_min_compensation(self):
         try:
